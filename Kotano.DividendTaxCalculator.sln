@@ -1,0 +1,42 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.4.33213.308
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Kotano.DividendTaxCalculator.UI", "Kotano.DividendTaxCalculator.UI\Kotano.DividendTaxCalculator.UI.csproj", "{20FC3FD2-C508-4C32-B62F-8AA0E8BE3E87}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Kotano.DividendTaxCalculator.Tests", "Kotano.DividendTaxCalculator.Tests\Kotano.DividendTaxCalculator.Tests.csproj", "{D2B9239D-A55B-40E6-B900-9291E37E29E3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Kotano.DividendTaxCalculator.Services", "Kotano.DividendTaxCalculator.Services\Kotano.DividendTaxCalculator.Services.csproj", "{B8A33289-2778-4894-B856-F540C02822C3}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{0D33FA1B-4029-45FF-BED0-3960EBE10603}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{20FC3FD2-C508-4C32-B62F-8AA0E8BE3E87}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{20FC3FD2-C508-4C32-B62F-8AA0E8BE3E87}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{20FC3FD2-C508-4C32-B62F-8AA0E8BE3E87}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{20FC3FD2-C508-4C32-B62F-8AA0E8BE3E87}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D2B9239D-A55B-40E6-B900-9291E37E29E3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D2B9239D-A55B-40E6-B900-9291E37E29E3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D2B9239D-A55B-40E6-B900-9291E37E29E3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D2B9239D-A55B-40E6-B900-9291E37E29E3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B8A33289-2778-4894-B856-F540C02822C3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B8A33289-2778-4894-B856-F540C02822C3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B8A33289-2778-4894-B856-F540C02822C3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B8A33289-2778-4894-B856-F540C02822C3}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{D2B9239D-A55B-40E6-B900-9291E37E29E3} = {0D33FA1B-4029-45FF-BED0-3960EBE10603}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {3EB44CB9-AAA0-4EB3-AA9F-C3E4A2A5BCFE}
+	EndGlobalSection
+EndGlobal

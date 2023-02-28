@@ -1,0 +1,82 @@
+﻿@page "/"
+@using Kotano.DividendTaxCalculator.Services.Interfaces
+@using Kotano.DividendTaxCalculator.Services.Models
+@inject ITaxCalculator TaxCalculator
+
+<PageTitle>Withdrawal Tax Calculator</PageTitle>
+
+
+<div class="container pt-4">
+    <h1 class="mb-5">WITHDRAWAL TAX CALCULATOR</h1>
+    <form class="col-md-6" onsubmit="return false">
+        <div class="mb-4">
+            <label for="desiredAmount" class="form-label">Enter the amount needed:</label>
+            <input class="form-control" id="desiredAmount" type="number" bind="@DesiredAmount" @oninput="@(ParseDesiredAmountInput)" aria-describedby="desiredAmountHelp" />
+        </div>
+
+        <div class="mb-4">
+            <label for="taxRate" class="form-label">Enter the tax rate (%):</label>
+            <input class="form-control" id="taxRate" type="number" bind="@TaxRate" @oninput="@(ParseTaxRateInput)" aria-describedby="taxRateHelp" />
+            <div id="taxRateHelp" class="form-text">Up to 99%</div>
+
+        </div>
+
+        <div class="mb-4">
+            <button type="submit" class="btn btn-primary" disabled="@(_isTaskRunning ? "disabled" : null)" @onclick="DoCalculation">@_buttonText</button>
+        </div>
+
+        @if (_showResult)
+        {
+            <div class="bg-light p-4">
+                <div class="mb-3">
+                    Minimum withdrawal amount:
+                    <div class="h3">@_result.MinimumWithdrawalAmount.ToString("C")</div>
+                </div>
+                <div class="mb-3">
+                    Set aside for tax:
+                    <div class="h3">@_result.TaxAmount.ToString("C")</div>
+                </div>
+            </div>
+        }
+
+        <div class="mt-5">
+            <small>Kotano Ltd. <a href="mailto:feedback@kotano.com">Submit feedback</a>.</small>
+        </div>
+    </form>
+</div>
+
+
+@code {
+
+    private decimal DesiredAmount { get; set; }
+    private decimal TaxRate { get; set; }
+    private CalculatorResult _result = new();
+    private bool _isTaskRunning = false;
+    private string _buttonText = "Calculate!";
+    private bool _showResult = false;
+
+    private void ParseDesiredAmountInput(ChangeEventArgs e)
+    {
+        DesiredAmount = decimal.TryParse((string)(e.Value ?? "0"), out var amountInput) ? amountInput : 0;
+    }
+
+    private void ParseTaxRateInput(ChangeEventArgs e)
+    {
+        TaxRate = decimal.TryParse((string)(e.Value ?? "0"), out var amountInput) ? amountInput : 0;
+    }
+
+    private async Task DoCalculation()
+    {
+        if (DesiredAmount == 0 || TaxRate == 0)
+            return;
+
+        _showResult = false;
+        _isTaskRunning = true;
+        _buttonText = "Calculating...";
+        await Task.Delay(1);
+        _result = await TaxCalculator.Calculate(DesiredAmount, TaxRate);
+        _buttonText = "Calculate!";
+        _isTaskRunning = false;
+        _showResult = true;
+    }
+}
