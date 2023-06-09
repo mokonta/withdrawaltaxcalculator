@@ -32,4 +32,4 @@ jobs:
       run: dotnet test --no-build --verbosity normal
       
     - name: Publish the Blazor project
-      run: dotnet publish
+      run: dotnet publish -o ./publish
