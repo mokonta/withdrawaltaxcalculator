@@ -7,7 +7,7 @@ on:
   push:
     branches: [ "develop" ]
   pull_request:
-    branches: [ "main" ]
+    branches: [ "develop" ]
 
 jobs:
   build:
@@ -20,7 +20,7 @@ jobs:
     - name: Setup .NET
       uses: actions/setup-dotnet@v3
       with:
-        dotnet-version: 6.0.x
+        dotnet-version: 7.0.x
         
     - name: Restore dependencies
       run: dotnet restore
@@ -30,3 +30,6 @@ jobs:
       
     - name: Test
       run: dotnet test --no-build --verbosity normal
+      
+    - name: Publish the Blazor project
+      run: dotnet publish ./publish
